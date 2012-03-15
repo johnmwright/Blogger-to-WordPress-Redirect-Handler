@@ -18,7 +18,3 @@ When migrating from Blogger to WordPress, the importer creates a `blogger_permal
 	</script>
 	
 
-## Changelog
-
-### 1.0 
-- Initial Release
