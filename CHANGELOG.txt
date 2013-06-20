@@ -1,5 +1,9 @@
 # Blogger Redirect Handler CHANGELOG
 
+## 1.1
+
+- Add support to also redirect pages
+
 ## 1.0 
 
 - Initial Release
