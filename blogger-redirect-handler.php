@@ -16,7 +16,7 @@ class mgr_Blogger_Redirect_Handler {
 	 * Adds the various actions
 	 */
 	function __construct() {
-		$this->blogger_meta = apply_filters'blogger_permalink';
+		$this->blogger_meta = apply_filters('blogger_permalink');
 		
 		if (!empty($_GET[$this->get_var]) && !headers_sent()) {
 			add_action('init', array($this, 'possible_redirect'), 1);
@@ -24,7 +24,7 @@ class mgr_Blogger_Redirect_Handler {
 	}
 	
 	/**
-	 * Does the lookup to see if we have a post with that post meta
+	 * Does the lookup to see if we have a post or page with that post meta
 	 */
 	function possible_redirect() {
 		// Clean our request
@@ -40,6 +40,19 @@ class mgr_Blogger_Redirect_Handler {
 		if (!empty($posts)) {
 			$post = array_shift($posts);
 			wp_redirect(get_permalink($post->ID), 301);
+			exit;
+		}
+		
+		// no page found, so see if it's a page instead
+		$pages = get_pages(array(
+			'meta_key' => apply_filters('blogger_meta_key', 'blogger_permalink', $this),
+			'meta_value' => $search_link,
+			'number' => 1,
+		));
+				
+		if (!empty($pages)) {
+			$page = array_shift($pages);
+			wp_redirect(get_permalink($page->ID), 301);
 			exit;
 		}
 	}

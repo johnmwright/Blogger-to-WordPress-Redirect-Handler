@@ -2,7 +2,7 @@
 
 ## Description
 
-When migrating from Blogger to WordPress, the importer creates a `blogger_permalink` meta key for each post.  This plugin catches $_GET query parameters and does a lookup for a post with the matching postmeta, then redirects to it.
+When migrating from Blogger to WordPress, the importer creates a `blogger_permalink` meta key for each post and page.  This plugin catches $_GET query parameters and does a lookup for a post/page with the matching postmeta, then redirects to it.
 
 ## Installation
 
